@@ -1,0 +1,10 @@
+# Parameters for model He10830_thick
+2.5 # Mstar
+4e3 # Tstar
+2.3 # Rstar
+1e-10 # Mdot
+7500 # Tmag
+dipole # field type
+# borders
+2.2 # first
+3 # second
