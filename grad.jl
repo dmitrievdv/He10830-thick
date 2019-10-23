@@ -3,27 +3,27 @@ module MagGrad
 using Printf
 
 function dvdr(r::Real, θ::Real) :: Real
-	return r^(-1.5)*cos(θ)^2/√(4-3*sin(θ)^2)
+	return exp(-1.5*log(r))*cos(θ)^2/√(4-3*sin(θ)^2)
 end 
 
 function dvdt(r::Real, θ::Real) :: Real
-	return -2*r^(-0.5)*sin(θ)*cos(θ)/√(4-3*sin(θ)^2)*(3*cos(θ)^2/(4-3*sin(θ)^2)-2)
+	return -2*exp(-0.5*log(r))*sin(θ)*cos(θ)/√(4-3*sin(θ)^2)*(3*cos(θ)^2/(4-3*sin(θ)^2)-2)
 end
 
 function dudt(r::Real, θ::Real) :: Real
-	return -r^(-1.5)/√(4-3*sin(θ)^2)*(cos(θ)^2-sin(θ)^2+3*sin(θ)^2*cos(θ)^2/(4-3*sin(θ)^2))
+	return -exp(-1.5*log(r))/√(4-3*sin(θ)^2)*(cos(θ)^2-sin(θ)^2+3*sin(θ)^2*cos(θ)^2/(4-3*sin(θ)^2))
 end
 
 function dudr(r::Real, θ::Real) :: Real
-	return 3*r^(-2.5)*cos(θ)*sin(θ)/2/√(4-3*sin(θ)^2)
+	return 3*exp(-2.5*log(r))*cos(θ)*sin(θ)/2/√(4-3*sin(θ)^2)
 end
 
 function u(r::Real, θ::Real) :: Real
-	return -√(1/r)*cos(θ)^2*2/√(4-3*sin(θ)^2)
+	return -exp(-0.5*log(r))*cos(θ)^2*2/√(4-3*sin(θ)^2)
 end
 
 function v(r::Real, θ::Real) :: Real
-	return -√(1/r^3)*cos(θ)*sin(θ)/√(4-3*sin(θ)^2)
+	return -exp(-1/3*log(r))*cos(θ)*sin(θ)/√(4-3*sin(θ)^2)
 end
  
 function grad(r::Real, θ::Real, α::Real, β::Real) :: Real
